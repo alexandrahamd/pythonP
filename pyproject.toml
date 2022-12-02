@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "1"
+version = "0.1.0"
+description = ""
+authors = ["alexandrahamd <pylina.alexandra@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+get-sorted = 'main:select_sorted'
+get-banch = 'main:get_by_date'
