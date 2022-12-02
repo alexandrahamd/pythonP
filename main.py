@@ -4,29 +4,17 @@ import pandas as pd
 from distlib.compat import raw_input
 
 
-# def cache(func):
-#     '''декоратор кеширования'''
-#     cache = {}
-#     def inner(**kwargs):
-#         print(kwargs)
-#         args = tuple(kwargs)
-#         if args in cache:
-#             return cache[args]
-#         else:
-#             cache[args] = func(args)
-#             return cache[args]
-#     print(cache)
-#     return inner
-# def cache(f):
-#     cache = {}
-#     def wrapper(*args, **kwargs):
-#         key = tuple(f'{f}, {args}, {kwargs}')
-#         if key not in cache:
-#             cache[key] = f(*args, **kwargs)
-#         return cache[key]
-#     return wrapper
-#
-# @cache
+def cache(f):
+    cache = {}
+    def wrapper(*args, **kwargs):
+        key = tuple(f'{f}, {args}, {kwargs}')
+        if key not in cache:
+            cache[key] = f(*args, **kwargs)
+        return cache[key]
+    return wrapper
+
+
+@cache
 def select_sorted():
     '''функция сортировки для пользователя'''
     sort_cols = raw_input('Сортировать по цене открытия(1),закрытия(2),максимум[3],минимум(4),объем(5):') or 'high'
